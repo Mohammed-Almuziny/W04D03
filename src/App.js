@@ -1,8 +1,8 @@
 import Nav from "./components/Nav";
 import Home from "./components/Home";
+import Favorite from "./components/Favorite";
 import About from "./components/About";
 import Contact from "./components/Contact";
-import Cards from "./components/Cards";
 import Card from "./components/Card"
 import Error404 from "./components/Error404";
 import { Route, Switch } from "react-router-dom";
@@ -15,9 +15,9 @@ function App() {
 
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/Favorite" component={Favorite} />
         <Route exact path="/About" component={About} />
         <Route exact path="/Contact" component={Contact} />
-        <Route exact path="/Cards" component={Cards} />
         <Route exact path="/Card/:id" component={Card} />
         <Route path="*" component={Error404} />
       </Switch>

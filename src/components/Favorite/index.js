@@ -1,9 +1,8 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
-import "./style.css";
 
-const Home = () => {
+const Favorite = () => {
   let cheakLoactions = JSON.parse(localStorage.getItem("locations"));
   let locationsTemblet = [
     {
@@ -46,7 +45,7 @@ const Home = () => {
   }
 
   const like = (index) => {
-    console.log('like');
+    console.log("like");
     if (locations[index].isLike) {
       locations[index].isLike = false;
     } else {
@@ -55,10 +54,11 @@ const Home = () => {
     localStorage.setItem("locations", JSON.stringify(locations));
   };
 
-  return (
-    <div className="cards">
-      {locations.map((location, i) => (
-        <div className="card" key={i}>
+
+  return <div className="cards">
+    {locations.map((location, i) => {
+      if(location.isLike) {
+        return(<div className="card" key={i}>
           <img
             src={location.image}
             alt=""
@@ -68,10 +68,12 @@ const Home = () => {
             {location.name}{" "}
             <FaHeart color={location.isLike ? "red" : "black"} onClick={() => like(location.id)} />
           </h3>
-        </div>
-      ))}
-    </div>
-  );
+        </div>)
+      } else {
+        
+      }
+    })}
+  </div>;
 };
 
-export default Home;
+export default Favorite;
